@@ -1,0 +1,64 @@
+{% from "_icons.html" import icon %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05090f">
+  <title>{% block title %}{{ title or 'MTS' }} · {{ device.brand }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="kind-{{ kind or 'misc' }}">
+<div class="stage">
+  <div class="device" id="device">
+
+    <div class="bezel bezel-top">
+      <span class="bezel-brand">{{ device.brand }}<small>ESWT</small></span>
+      <span class="bezel-sensor" aria-hidden="true"></span>
+      <span class="bezel-power" title="Equipo encendido"><i></i>POWER</span>
+    </div>
+
+    <div class="screen" id="screen">
+      {% block statusbar %}
+      <header class="statusbar">
+        <div class="sb-left">
+          <a class="sb-home" href="{{ url_for('page', name=home_page) }}" title="Menú principal">{{ icon('home') }}</a>
+          <nav class="crumbs" aria-label="Ruta">
+            {% for c in crumbs %}
+              {% if not loop.last %}
+                <a href="{{ url_for('page', name=c.name) }}">{{ c.label }}</a><span class="sep">/</span>
+              {% else %}
+                <span class="current">{{ c.label }}</span>
+              {% endif %}
+            {% endfor %}
+          </nav>
+        </div>
+        <div class="sb-right">
+          {% block status_extra %}{% endblock %}
+          <span class="chip chip-status" id="sysStatus"><i class="led"></i><span>LISTO</span></span>
+          <span class="chip chip-counter" title="Pulsos totales del aplicador (simulado)">
+            {{ icon('probe') }}<span id="shotCounter">0</span>
+          </span>
+          <span class="clock" id="clock">--:--</span>
+        </div>
+      </header>
+      {% endblock %}
+
+      <main class="content">
+        {% block content %}{% endblock %}
+      </main>
+
+      {% block overlays %}{% endblock %}
+    </div>
+
+    <div class="bezel bezel-bottom">
+      <span>{{ device.model }}</span>
+      <span class="bezel-fw">FW {{ device.firmware }}</span>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/device.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

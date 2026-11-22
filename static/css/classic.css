@@ -1,0 +1,118 @@
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #111;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+/* Contenedor que centra y escala la "pantalla" de 1024x600 */
+.viewport {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.screen {
+  position: relative;
+  flex: none;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  overflow: hidden;
+  transform-origin: center center;
+  user-select: none;
+}
+
+.screen > * { position: absolute; margin: 0; }
+
+/* ---------- Botones ---------- */
+.hmi-button {
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  white-space: pre;
+  line-height: 1.15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.hmi-button.sta-transparent { background: transparent; }
+.hmi-button.sta-transparent:active { background: rgba(0, 0, 0, .12); }
+.hmi-button.sta-image:active { filter: brightness(.85); }
+.hmi-button.sta-color:active {
+  background-color: var(--pressed-bg) !important;
+  color: var(--pressed-color) !important;
+}
+
+/* ---------- Textos y números ---------- */
+.hmi-text, .hmi-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: pre;
+  line-height: 1.1;
+}
+.hmi-number { font-weight: bold; }
+
+/* ---------- Sliders ---------- */
+.hmi-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+.hmi-slider::-webkit-slider-runnable-track {
+  height: 8px; border-radius: 4px; background: var(--track);
+}
+.hmi-slider::-moz-range-track {
+  height: 8px; border-radius: 4px; background: var(--track);
+}
+.hmi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px; height: 24px; margin-top: -8px;
+  border-radius: 50%; background: var(--cursor); border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.4);
+}
+.hmi-slider::-moz-range-thumb {
+  width: 24px; height: 24px;
+  border-radius: 50%; background: var(--cursor); border: 2px solid #fff;
+}
+
+/* ---------- Imágenes y video ---------- */
+.hmi-picture { object-fit: fill; pointer-events: none; }
+
+.hmi-video {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hmi-video img {
+  max-width: 60%;
+  animation: intro 2.5s ease-in-out forwards;
+}
+@keyframes intro {
+  0%   { opacity: 0; transform: scale(.9); }
+  40%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; }
+}
+
+/* ---------- Índice de páginas ---------- */
+.page-index {
+  max-width: 640px; margin: 40px auto; padding: 24px;
+  background: #fff; border-radius: 8px;
+}
+.page-index a { color: #0b63c5; }
+.page-index small { color: #777; }

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="view view-bodymap">
+  <div class="view-head">
+    <a class="btn-back" href="{{ url_for('page', name=parent or home_page) }}">{{ icon('back') }}<span>Atrás</span></a>
+    <div>
+      <p class="eyebrow">Seleccione la zona anatómica a tratar</p>
+      <h1>{{ title }}</h1>
+    </div>
+  </div>
+
+  <div class="bodymap-layout">
+    <div class="bodymap-figure panel">
+      <img src="{{ url_for('static', filename='img/' ~ image) }}" alt="Mapa muscular anterior y posterior">
+      <span class="fig-label fig-left">ANTERIOR</span>
+      <span class="fig-label fig-right">POSTERIOR</span>
+      <div class="scanline" aria-hidden="true"></div>
+      {% for z in zones %}
+        <a class="hotspot" href="{{ url_for('page', name=z.name) }}" data-zone="{{ z.name }}"
+           title="{{ z.title }}"
+           style="left:{{ '%.2f'|format(z.left) }}%;top:{{ '%.2f'|format(z.top) }}%;width:{{ '%.2f'|format(z.width) }}%;height:{{ '%.2f'|format(z.height) }}%;">
+          <span class="hotspot-dot"></span>
+        </a>
+      {% endfor %}
+    </div>
+
+    <ul class="zone-list">
+      {% for z in zones %}
+        <li>
+          <a class="zone-item" href="{{ url_for('page', name=z.name) }}" data-zone="{{ z.name }}">
+            <span class="zone-index">{{ '%02d'|format(loop.index) }}</span>
+            <span class="zone-text">
+              <strong>{{ z.label }}</strong>
+              <small>{{ z.title }}</small>
+            </span>
+            {{ icon('chevron') }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% macro fmt(p, raw) -%}{{ "%.*f"|format(p.decimals, raw * p.scale) }}{%- endmacro %}
+
+{% block status_extra %}
+  {% if protocol.applicator %}
+    <span class="chip chip-probe" title="Aplicador recomendado">{{ icon('probe') }}{{ protocol.applicator }}</span>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<section class="view view-params {{ 'has-image' if image else 'no-image' }}" id="treatment"
+         data-title="{{ title }}" data-applicator="{{ protocol.applicator or '' }}"
+         data-back="{{ url_for('page', name=parent or home_page) }}">
+
+  <div class="view-head">
+    <a class="btn-back" href="{{ url_for('page', name=parent or home_page) }}">{{ icon('back') }}<span>Atrás</span></a>
+    <div class="head-text">
+      <p class="eyebrow">
+        {% if kind == 'protocol' %}Indicación · {{ category }}{% else %}Zona anatómica · Parámetros manuales{% endif %}
+      </p>
+      <h1 class="{{ 'long' if title|length > 48 }}">{{ title }}</h1>
+    </div>
+  </div>
+
+  <div class="params-layout">
+    {% if image %}
+      <figure class="region-figure panel">
+        <img src="{{ url_for('static', filename='img/' ~ image) }}" alt="{{ title }}">
+        <div class="scanline" aria-hidden="true"></div>
+        <figcaption>{{ icon('zone') }} Zona de aplicación</figcaption>
+      </figure>
+    {% endif %}
+
+    <div class="params-main">
+      <div class="params-grid">
+        {% for p in params %}
+          <div class="param panel" data-key="{{ p.key }}" data-label="{{ p.label }}" data-unit="{{ p.unit }}"
+               data-scale="{{ p.scale }}" data-decimals="{{ p.decimals }}" data-default="{{ p.default }}">
+            <div class="param-head">
+              <span class="param-label">{{ p.label }}</span>
+              <span class="param-flag" hidden>Modificado</span>
+            </div>
+            <div class="param-readout">
+              <output class="param-value">{{ fmt(p, p.value) }}</output>
+              <span class="param-unit">{{ p.unit }}</span>
+            </div>
+            <div class="param-ctrl">
+              <button type="button" class="step" data-dir="-1" aria-label="Disminuir {{ p.label }}">{{ icon('minus') }}</button>
+              <input type="range" class="param-slider" aria-label="{{ p.label }}"
+                     min="{{ p.min }}" max="{{ p.max }}" step="{{ p.step }}" value="{{ p.value }}">
+              <button type="button" class="step" data-dir="1" aria-label="Aumentar {{ p.label }}">{{ icon('plus') }}</button>
+            </div>
+            <div class="param-range">
+              <span>{{ fmt(p, p.min) }}</span>
+              <span class="param-rec">Recomendado {{ fmt(p, p.default) }}</span>
+              <span>{{ fmt(p, p.max) }}</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="info-strip">
+        <div class="info-item">
+          {{ icon('clock') }}
+          <div><small>Duración estimada</small><strong id="estDuration">--:--</strong></div>
+        </div>
+        {% if protocol.applicator %}
+          <div class="info-item">
+            {{ icon('probe') }}
+            <div><small>Aplicador recomendado</small><strong>{{ protocol.applicator }}</strong></div>
+          </div>
+        {% endif %}
+        {% if protocol.note %}
+          <div class="info-item info-note">
+            {{ icon('info') }}
+            <p>{{ protocol.note }}</p>
+          </div>
+        {% endif %}
+        <div class="info-item info-warning" id="paramWarning" hidden>
+          {{ icon('warning') }}
+          <p id="paramWarningText"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-bar">
+    <a class="btn btn-ghost" href="{{ url_for('page', name=parent or home_page) }}">Cancelar</a>
+    <button type="button" class="btn btn-ghost" id="btnReset">{{ icon('reset') }}Restablecer</button>
+    <span class="spacer"></span>
+    <button type="button" class="btn btn-primary btn-start" id="btnStart">{{ icon('play') }}Iniciar terapia</button>
+  </div>
+</section>
+{% endblock %}
+
+{% block overlays %}
+{# ---------- Verificación de seguridad ---------- #}
+<div class="overlay" id="safetyModal" hidden>
+  <div class="modal panel" role="dialog" aria-modal="true" aria-labelledby="safetyTitle">
+    <div class="modal-head">
+      <span class="modal-icon warn">{{ icon('warning') }}</span>
+      <div>
+        <p class="eyebrow">Verificación previa</p>
+        <h2 id="safetyTitle">Lista de seguridad</h2>
+      </div>
+    </div>
+    <div class="modal-summary" id="safetySummary"></div>
+    <ul class="checklist">
+      <li><label><input type="checkbox"><span class="box">{{ icon('check') }}</span>Aplicador {{ protocol.applicator or '' }} conectado y en buen estado</label></li>
+      <li><label><input type="checkbox"><span class="box">{{ icon('check') }}</span>Gel de acoplamiento aplicado en la zona</label></li>
+      <li><label><input type="checkbox"><span class="box">{{ icon('check') }}</span>Paciente informado y sin contraindicaciones</label></li>
+    </ul>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" data-close>Volver</button>
+      <button type="button" class="btn btn-primary" id="btnConfirm" disabled>{{ icon('play') }}Confirmar e iniciar</button>
+    </div>
+  </div>
+</div>
+
+{# ---------- Sesión de tratamiento ---------- #}
+<div class="overlay overlay-session" id="session" hidden>
+  <div class="session">
+    <div class="session-head">
+      <div>
+        <p class="eyebrow" id="sessionState">Terapia en curso</p>
+        <h2>{{ title }}</h2>
+      </div>
+      <div class="speed" role="group" aria-label="Velocidad de simulación">
+        <span>Simulación</span>
+        <button type="button" data-speed="1" class="on">×1</button>
+        <button type="button" data-speed="5">×5</button>
+        <button type="button" data-speed="20">×20</button>
+      </div>
+    </div>
+
+    <div class="session-body">
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 220 220" aria-hidden="true">
+          <circle class="ring-ticks" cx="110" cy="110" r="102"/>
+          <circle class="ring-track" cx="110" cy="110" r="90"/>
+          <circle class="ring-fill" id="ringFill" cx="110" cy="110" r="90"/>
+        </svg>
+        <div class="emitter" id="emitter"><i></i><i></i></div>
+        <div class="ring-center">
+          <strong id="pulseCount">0</strong>
+          <span>de <b id="pulseTotal">0</b> pulsos</span>
+          <em id="pulsePct">0 %</em>
+        </div>
+      </div>
+
+      <div class="session-side">
+        <div class="stats" id="sessionParams"></div>
+        <div class="stats">
+          <div class="stat"><small>Tiempo transcurrido</small><strong id="tElapsed">00:00</strong></div>
+          <div class="stat"><small>Tiempo restante</small><strong id="tRemaining">00:00</strong></div>
+        </div>
+        <div class="scope panel">
+          <div class="scope-head"><span>Presión acústica</span><span class="scope-live"><i class="led"></i>EN VIVO</span></div>
+          <canvas id="scope" width="460" height="110"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-actions" id="runActions">
+      <button type="button" class="btn btn-ghost btn-lg" id="btnPause">{{ icon('pause', 'i-pause') }}{{ icon('play', 'i-play') }}<span>Pausar</span></button>
+      <button type="button" class="btn btn-danger btn-lg" id="btnStop">{{ icon('stop') }}Detener</button>
+    </div>
+  </div>
+
+  {# Resumen final #}
+  <div class="summary panel" id="summary" hidden>
+    <span class="modal-icon" id="summaryIcon">{{ icon('check', 'i-ok') }}{{ icon('warning', 'i-warn') }}</span>
+    <p class="eyebrow" id="summaryState">Tratamiento completado</p>
+    <h2>{{ title }}</h2>
+    <dl class="summary-grid" id="summaryGrid"></dl>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" id="btnRepeat">{{ icon('reset') }}Repetir sesión</button>
+      <a class="btn btn-primary" href="{{ url_for('page', name=parent or home_page) }}">Finalizar</a>
+    </div>
+  </div>
+</div>
+
+{# ---------- Confirmar parada ---------- #}
+<div class="overlay overlay-top" id="stopModal" hidden>
+  <div class="modal modal-sm panel" role="alertdialog" aria-modal="true" aria-labelledby="stopTitle">
+    <div class="modal-head">
+      <span class="modal-icon danger">{{ icon('stop') }}</span>
+      <div>
+        <p class="eyebrow">Interrupción</p>
+        <h2 id="stopTitle">¿Detener el tratamiento?</h2>
+      </div>
+    </div>
+    <p class="modal-text">La emisión de pulsos se detendrá y la sesión quedará registrada como interrumpida.</p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" data-close>Continuar terapia</button>
+      <button type="button" class="btn btn-danger" id="btnStopConfirm">Detener</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/treatment.js') }}"></script>
+{% endblock %}

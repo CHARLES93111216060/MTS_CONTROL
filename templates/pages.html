@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Páginas del proyecto · MTS</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dev-index">
+<main class="page-index">
+  <p class="eyebrow">Herramienta de desarrollo</p>
+  <h1>Páginas del proyecto eme.HMI</h1>
+  <table>
+    <thead><tr><th>ID</th><th>Página</th><th>Tipo</th><th>Componentes</th><th>Vistas</th></tr></thead>
+    <tbody>
+    {% for r in rows %}
+      <tr>
+        <td>{{ r.page.id }}</td>
+        <td><strong>{{ r.page.name }}</strong><br><small>{{ r.title }}</small></td>
+        <td><span class="tag">{{ r.kind }}</span></td>
+        <td>{{ r.page.components | length }}</td>
+        <td>
+          <a href="{{ url_for('page', name=r.page.name) }}">Nueva</a> ·
+          <a href="{{ url_for('classic', name=r.page.name) }}">Clásica</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</main>
+</body>
+</html>

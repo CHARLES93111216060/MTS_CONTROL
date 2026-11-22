@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.name }} · MTS clásico</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/classic.css') }}">
+</head>
+<body>
+<div class="viewport">
+  <div class="screen" id="screen"
+       data-page="{{ page.name }}"
+       data-events='{{ page.events | tojson }}'
+       style="width:{{ width }}px;height:{{ height }}px;
+              {% if page.bg_color %}background-color:{{ page.bg_color }};{% endif %}
+              {% if page.bg_image %}background-image:url('{{ url_for('static', filename='img/' ~ page.bg_image) }}');{% endif %}">
+
+    {% for c in page.components %}
+      {% set pos = "left:%dpx;top:%dpx;width:%dpx;height:%dpx;" % (c.x, c.y, c.w, c.h) %}
+      {% set ev = c.events | tojson %}
+
+      {% if c.type == 'button' %}
+        <button class="hmi-button sta-{{ c.sta }}" id="{{ c.name }}" data-events='{{ ev }}'
+                style="{{ pos }}font-size:{{ c.font_size }}px;color:{{ c.color }};
+                       {% if c.bg_color %}background-color:{{ c.bg_color }};{% endif %}
+                       {% if c.image %}background-image:url('{{ url_for('static', filename='img/' ~ c.image) }}');{% endif %}
+                       --pressed-bg:{{ c.pressed_bg }};--pressed-color:{{ c.pressed_color }};">{{ c.text }}</button>
+
+      {% elif c.type == 'text' %}
+        <div class="hmi-text" id="{{ c.name }}"
+             style="{{ pos }}font-size:{{ c.font_size }}px;color:{{ c.color }};
+                    {% if c.bg_color %}background-color:{{ c.bg_color }};{% endif %}">{{ c.text }}</div>
+
+      {% elif c.type in ['number', 'xfloat'] %}
+        <div class="hmi-number" id="{{ c.name }}"
+             data-value="{{ c.value }}" data-decimals="{{ c.decimals or 0 }}"
+             style="{{ pos }}font-size:{{ c.font_size }}px;color:{{ c.color }};
+                    {% if c.bg_color %}background-color:{{ c.bg_color }};{% endif %}">{{ c.value }}</div>
+
+      {% elif c.type == 'slider' %}
+        <input type="range" class="hmi-slider" id="{{ c.name }}" data-events='{{ ev }}'
+               min="{{ c.min }}" max="{{ c.max }}" value="{{ c.value }}"
+               style="{{ pos }}--track:{{ c.track_color }};--cursor:{{ c.cursor_color }};">
+
+      {% elif c.type == 'picture' %}
+        <img class="hmi-picture" id="{{ c.name }}" alt="{{ c.name }}"
+             src="{{ url_for('static', filename='img/' ~ c.image) }}" style="{{ pos }}">
+
+      {% elif c.type == 'video' %}
+        {# El video del Nextion (formato propio) no se puede usar en web:
+           se muestra una pantalla de presentación y al terminar se ejecuta "playend". #}
+        <div class="hmi-video" id="{{ c.name }}" data-events='{{ ev }}' style="{{ pos }}">
+          <img src="{{ url_for('static', filename='img/pic_8.png') }}" alt="MTS">
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<script>
+  window.PAGE_URL = "{{ url_for('classic', name='__NAME__') }}";
+</script>
+<script src="{{ url_for('static', filename='js/hmi.js') }}"></script>
+</body>
+</html>

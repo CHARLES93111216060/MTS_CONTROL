@@ -1,0 +1,4258 @@
+{
+  "project": "eme.HMI",
+  "resolution": [
+    1024,
+    600
+  ],
+  "start_page": 0,
+  "program_s": "//The following code is only run once when power on, and is generally used for global variable definition and power on initialization data\nint sys0=0,sys1=0,sys2=0     //At present, the definition of global variable only supports 4-byte signed integer (int), and other types of global quantity declaration are not supported. If you want to use string type, you can use variable control in the page to implement\nbaud=9600//Configure baudrate\ndim=100//Configure backlight\nrecmod=0//Serial data parsing mode:0-Passive mode;1-Active mode\nprinth 00 00 00 ff ff ff 88 ff ff ff//Output power on information to serial port\npage 0                       //Power on start page 0\n",
+  "pages": [
+    {
+      "id": 0,
+      "name": "mapa",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_5.jpg",
+      "bg_color": null,
+      "events": {},
+      "components": [
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 0,
+          "y": 0,
+          "w": 186,
+          "h": 56,
+          "events": {
+            "up": [
+              "page page0"
+            ]
+          },
+          "text": "Home",
+          "font_size": 26,
+          "color": "#5200ac",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#8300ff"
+        },
+        {
+          "name": "b1",
+          "type": "button",
+          "x": 154,
+          "y": 95,
+          "w": 112,
+          "h": 227,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_1.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b2",
+          "type": "button",
+          "x": 325,
+          "y": 97,
+          "w": 112,
+          "h": 227,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_1.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b3",
+          "type": "button",
+          "x": 178,
+          "y": 320,
+          "w": 112,
+          "h": 227,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_1.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b4",
+          "type": "button",
+          "x": 297,
+          "y": 320,
+          "w": 112,
+          "h": 227,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_1.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b5",
+          "type": "button",
+          "x": 620,
+          "y": 307,
+          "w": 112,
+          "h": 227,
+          "events": {
+            "up": [
+              "page page6"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_1.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b6",
+          "type": "button",
+          "x": 734,
+          "y": 305,
+          "w": 112,
+          "h": 227,
+          "events": {
+            "up": [
+              "page page7"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_1.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b7",
+          "type": "button",
+          "x": 694,
+          "y": 28,
+          "w": 78,
+          "h": 77,
+          "events": {
+            "up": [
+              "page page3"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_2.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b8",
+          "type": "button",
+          "x": 652,
+          "y": 105,
+          "w": 161,
+          "h": 65,
+          "events": {
+            "up": [
+              "page page4"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_3.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b9",
+          "type": "button",
+          "x": 654,
+          "y": 201,
+          "w": 161,
+          "h": 65,
+          "events": {
+            "up": [
+              "page page5"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_3.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "inicio",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_22.png",
+      "bg_color": null,
+      "events": {},
+      "components": [
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 81,
+          "y": 114,
+          "w": 857,
+          "h": 135,
+          "events": {
+            "up": [
+              "page mapa"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b1",
+          "type": "button",
+          "x": 84,
+          "y": 294,
+          "w": 858,
+          "h": 132,
+          "events": {
+            "up": [
+              "page patologias"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "page0",
+      "w": 1024,
+      "h": 600,
+      "bg_image": null,
+      "bg_color": "#ffffff",
+      "events": {},
+      "components": [
+        {
+          "name": "v0",
+          "type": "video",
+          "x": 0,
+          "y": 0,
+          "w": 1024,
+          "h": 576,
+          "events": {
+            "playend": [
+              "page inicio"
+            ]
+          },
+          "loop": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "page3",
+      "w": 1024,
+      "h": 600,
+      "bg_image": null,
+      "bg_color": "#f6f6f6",
+      "events": {
+        "loadend": [
+          "h0.val=30",
+          "h1.val=40",
+          "n0.val=30",
+          "n1.val=40"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 470,
+          "y": 188,
+          "w": 410,
+          "h": 84,
+          "events": {
+            "slide": [
+              "n0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "t0",
+          "type": "text",
+          "x": 471,
+          "y": 125,
+          "w": 218,
+          "h": 51,
+          "events": {},
+          "text": "Frecuencia (Hz)",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#f6f6f6"
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 472,
+          "y": 407,
+          "w": 410,
+          "h": 84,
+          "events": {
+            "slide": [
+              "n1.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "t1",
+          "type": "text",
+          "x": 463,
+          "y": 343,
+          "w": 295,
+          "h": 51,
+          "events": {},
+          "text": "Intensidad (Joules)",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#f6f6f6"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 0,
+          "y": 0,
+          "w": 186,
+          "h": 56,
+          "events": {
+            "up": [
+              "page mapa"
+            ]
+          },
+          "text": "Atrás",
+          "font_size": 26,
+          "color": "#0000ff",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b1",
+          "type": "button",
+          "x": 836,
+          "y": 543,
+          "w": 186,
+          "h": 56,
+          "events": {},
+          "text": "Start",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 770,
+          "y": 140,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#f6f6f6",
+          "sta": "color",
+          "bg_color": "#000000",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 771,
+          "y": 348,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#f6f6f6",
+          "sta": "color",
+          "bg_color": "#000000",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "p0",
+          "type": "picture",
+          "x": 2,
+          "y": 78,
+          "w": 421,
+          "h": 524,
+          "events": {},
+          "image": "pic_6.png"
+        },
+        {
+          "name": "t2",
+          "type": "text",
+          "x": 325,
+          "y": 7,
+          "w": 438,
+          "h": 92,
+          "events": {},
+          "text": "Región posterior del craneo\n     y columna cervical",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#f6f6f6"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "page6",
+      "w": 1024,
+      "h": 600,
+      "bg_image": null,
+      "bg_color": "#ffffff",
+      "events": {
+        "loadend": [
+          "h0.val=30",
+          "h1.val=40",
+          "n0.val=30",
+          "n1.val=40"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 470,
+          "y": 188,
+          "w": 410,
+          "h": 84,
+          "events": {
+            "slide": [
+              "n0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "t0",
+          "type": "text",
+          "x": 471,
+          "y": 125,
+          "w": 218,
+          "h": 51,
+          "events": {},
+          "text": "Frecuencia (Hz)",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff"
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 472,
+          "y": 407,
+          "w": 410,
+          "h": 84,
+          "events": {
+            "slide": [
+              "n1.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "t1",
+          "type": "text",
+          "x": 463,
+          "y": 343,
+          "w": 295,
+          "h": 51,
+          "events": {},
+          "text": "Intensidad (Joules)",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 0,
+          "y": 0,
+          "w": 186,
+          "h": 56,
+          "events": {
+            "up": [
+              "page mapa"
+            ]
+          },
+          "text": "Atrás",
+          "font_size": 26,
+          "color": "#0000ff",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b1",
+          "type": "button",
+          "x": 836,
+          "y": 543,
+          "w": 186,
+          "h": 56,
+          "events": {},
+          "text": "Start",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 770,
+          "y": 140,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#f6f6f6",
+          "sta": "color",
+          "bg_color": "#000000",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 771,
+          "y": 348,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#f6f6f6",
+          "sta": "color",
+          "bg_color": "#000000",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "p0",
+          "type": "picture",
+          "x": 38,
+          "y": 78,
+          "w": 222,
+          "h": 521,
+          "events": {},
+          "image": "pic_12.png"
+        },
+        {
+          "name": "t2",
+          "type": "text",
+          "x": 260,
+          "y": 37,
+          "w": 485,
+          "h": 62,
+          "events": {},
+          "text": "Miembro inferior izquierdo posterior",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "page4",
+      "w": 1024,
+      "h": 600,
+      "bg_image": null,
+      "bg_color": "#ffffff",
+      "events": {
+        "loadend": [
+          "h0.val=30",
+          "h1.val=40",
+          "n0.val=30",
+          "n1.val=40"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 470,
+          "y": 188,
+          "w": 410,
+          "h": 84,
+          "events": {
+            "slide": [
+              "n0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "t0",
+          "type": "text",
+          "x": 471,
+          "y": 125,
+          "w": 218,
+          "h": 51,
+          "events": {},
+          "text": "Frecuencia (Hz)",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff"
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 472,
+          "y": 407,
+          "w": 410,
+          "h": 84,
+          "events": {
+            "slide": [
+              "n1.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "t1",
+          "type": "text",
+          "x": 463,
+          "y": 343,
+          "w": 295,
+          "h": 51,
+          "events": {},
+          "text": "Intensidad (Joules)",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 0,
+          "y": 0,
+          "w": 186,
+          "h": 56,
+          "events": {
+            "up": [
+              "page mapa"
+            ]
+          },
+          "text": "Atrás",
+          "font_size": 26,
+          "color": "#0000ff",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b1",
+          "type": "button",
+          "x": 836,
+          "y": 543,
+          "w": 186,
+          "h": 56,
+          "events": {},
+          "text": "Start",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 770,
+          "y": 140,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#f6f6f6",
+          "sta": "color",
+          "bg_color": "#000000",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 771,
+          "y": 348,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#f6f6f6",
+          "sta": "color",
+          "bg_color": "#000000",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "p0",
+          "type": "picture",
+          "x": 8,
+          "y": 171,
+          "w": 418,
+          "h": 397,
+          "events": {},
+          "image": "pic_10.png"
+        },
+        {
+          "name": "t2",
+          "type": "text",
+          "x": 260,
+          "y": 38,
+          "w": 485,
+          "h": 62,
+          "events": {},
+          "text": "Región torácica posterior",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "page5",
+      "w": 1024,
+      "h": 600,
+      "bg_image": null,
+      "bg_color": "#ffffff",
+      "events": {
+        "loadend": [
+          "h0.val=30",
+          "h1.val=40",
+          "n0.val=30",
+          "n1.val=40"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 470,
+          "y": 188,
+          "w": 410,
+          "h": 84,
+          "events": {
+            "slide": [
+              "n0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "t0",
+          "type": "text",
+          "x": 471,
+          "y": 125,
+          "w": 218,
+          "h": 51,
+          "events": {},
+          "text": "Frecuencia (Hz)",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff"
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 472,
+          "y": 407,
+          "w": 410,
+          "h": 84,
+          "events": {
+            "slide": [
+              "n1.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "t1",
+          "type": "text",
+          "x": 463,
+          "y": 343,
+          "w": 295,
+          "h": 51,
+          "events": {},
+          "text": "Intensidad (Joules)",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 0,
+          "y": 0,
+          "w": 186,
+          "h": 56,
+          "events": {
+            "up": [
+              "page mapa"
+            ]
+          },
+          "text": "Atrás",
+          "font_size": 26,
+          "color": "#0000ff",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b1",
+          "type": "button",
+          "x": 836,
+          "y": 543,
+          "w": 186,
+          "h": 56,
+          "events": {},
+          "text": "Start",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 770,
+          "y": 140,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#f6f6f6",
+          "sta": "color",
+          "bg_color": "#000000",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 771,
+          "y": 348,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#f6f6f6",
+          "sta": "color",
+          "bg_color": "#000000",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "p0",
+          "type": "picture",
+          "x": 17,
+          "y": 210,
+          "w": 362,
+          "h": 333,
+          "events": {},
+          "image": "pic_9.jpg"
+        },
+        {
+          "name": "t2",
+          "type": "text",
+          "x": 260,
+          "y": 38,
+          "w": 485,
+          "h": 62,
+          "events": {},
+          "text": "Región lumbar",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "page7",
+      "w": 1024,
+      "h": 600,
+      "bg_image": null,
+      "bg_color": "#ffffff",
+      "events": {
+        "loadend": [
+          "h0.val=30",
+          "h1.val=40",
+          "n0.val=30",
+          "n1.val=40"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 470,
+          "y": 188,
+          "w": 410,
+          "h": 84,
+          "events": {
+            "slide": [
+              "n0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "t0",
+          "type": "text",
+          "x": 471,
+          "y": 125,
+          "w": 218,
+          "h": 51,
+          "events": {},
+          "text": "Frecuencia (Hz)",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff"
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 472,
+          "y": 407,
+          "w": 410,
+          "h": 84,
+          "events": {
+            "slide": [
+              "n1.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "t1",
+          "type": "text",
+          "x": 463,
+          "y": 343,
+          "w": 295,
+          "h": 51,
+          "events": {},
+          "text": "Intensidad (Joules)",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 0,
+          "y": 0,
+          "w": 186,
+          "h": 56,
+          "events": {
+            "up": [
+              "page mapa"
+            ]
+          },
+          "text": "Atrás",
+          "font_size": 26,
+          "color": "#0000ff",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b1",
+          "type": "button",
+          "x": 836,
+          "y": 543,
+          "w": 186,
+          "h": 56,
+          "events": {},
+          "text": "Start",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 770,
+          "y": 140,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#f6f6f6",
+          "sta": "color",
+          "bg_color": "#000000",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 771,
+          "y": 348,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#f6f6f6",
+          "sta": "color",
+          "bg_color": "#000000",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "p0",
+          "type": "picture",
+          "x": 48,
+          "y": 92,
+          "w": 218,
+          "h": 505,
+          "events": {},
+          "image": "pic_11.png"
+        },
+        {
+          "name": "t2",
+          "type": "text",
+          "x": 260,
+          "y": 37,
+          "w": 485,
+          "h": 62,
+          "events": {},
+          "text": "Miembro inferior derecho posterior",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "ortopedia",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_13.jpg",
+      "bg_color": null,
+      "events": {},
+      "components": [
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 0,
+          "y": 1,
+          "w": 186,
+          "h": 56,
+          "events": {
+            "up": [
+              "page patologias"
+            ]
+          },
+          "text": "Atrás",
+          "font_size": 26,
+          "color": "#0000ff",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b1",
+          "type": "button",
+          "x": 62,
+          "y": 85,
+          "w": 281,
+          "h": 98,
+          "events": {
+            "up": [
+              "page pinzamiento"
+            ]
+          },
+          "text": "        Pinzamiento con\n        o sin tendinosis",
+          "font_size": 20,
+          "color": "#eeeeee",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b2",
+          "type": "button",
+          "x": 370,
+          "y": 85,
+          "w": 281,
+          "h": 98,
+          "events": {
+            "up": [
+              "page epicondilitis"
+            ]
+          },
+          "text": "       Epicondilitis",
+          "font_size": 20,
+          "color": "#eeeeee",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b3",
+          "type": "button",
+          "x": 684,
+          "y": 82,
+          "w": 281,
+          "h": 98,
+          "events": {
+            "up": [
+              "page tendon"
+            ]
+          },
+          "text": "            Síndrome del\n          tendón rotuliano ",
+          "font_size": 20,
+          "color": "#eeeeee",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b4",
+          "type": "button",
+          "x": 61,
+          "y": 254,
+          "w": 281,
+          "h": 98,
+          "events": {
+            "up": [
+              "page fascitis"
+            ]
+          },
+          "text": "        Fascitis plantar",
+          "font_size": 20,
+          "color": "#eeeeee",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b5",
+          "type": "button",
+          "x": 370,
+          "y": 254,
+          "w": 281,
+          "h": 98,
+          "events": {
+            "up": [
+              "page aquilodinia"
+            ]
+          },
+          "text": "       Aquilodinia",
+          "font_size": 20,
+          "color": "#eeeeee",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b6",
+          "type": "button",
+          "x": 682,
+          "y": 254,
+          "w": 281,
+          "h": 98,
+          "events": {
+            "up": [
+              "page gatillo"
+            ]
+          },
+          "text": "       Síndrome del\n        punto gatillo",
+          "font_size": 20,
+          "color": "#eeeeee",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b7",
+          "type": "button",
+          "x": 372,
+          "y": 432,
+          "w": 281,
+          "h": 98,
+          "events": {
+            "up": [
+              "page pseudoartrosis"
+            ]
+          },
+          "text": "         Pseudoartrosis ",
+          "font_size": 20,
+          "color": "#eeeeee",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "patologias",
+      "w": 1024,
+      "h": 600,
+      "bg_image": null,
+      "bg_color": "#eeeeee",
+      "events": {},
+      "components": [
+        {
+          "name": "p0",
+          "type": "picture",
+          "x": 0,
+          "y": 101,
+          "w": 1024,
+          "h": 423,
+          "events": {},
+          "image": "pic_14.jpg"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 60,
+          "y": 182,
+          "w": 425,
+          "h": 105,
+          "events": {
+            "up": [
+              "page ortopedia"
+            ]
+          },
+          "text": "Ortopedia",
+          "font_size": 26,
+          "color": "#eeeeee",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b1",
+          "type": "button",
+          "x": 538,
+          "y": 181,
+          "w": 425,
+          "h": 105,
+          "events": {
+            "up": [
+              "page dermatologia"
+            ]
+          },
+          "text": "Dermatologia",
+          "font_size": 26,
+          "color": "#eeeeee",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b2",
+          "type": "button",
+          "x": 64,
+          "y": 354,
+          "w": 425,
+          "h": 105,
+          "events": {
+            "up": [
+              "page estetica"
+            ]
+          },
+          "text": "Estética",
+          "font_size": 26,
+          "color": "#eeeeee",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b3",
+          "type": "button",
+          "x": 537,
+          "y": 352,
+          "w": 425,
+          "h": 105,
+          "events": {
+            "up": [
+              "page urogenital"
+            ]
+          },
+          "text": "Urogenital",
+          "font_size": 26,
+          "color": "#eeeeee",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b4",
+          "type": "button",
+          "x": 0,
+          "y": 0,
+          "w": 186,
+          "h": 56,
+          "events": {
+            "up": [
+              "page inicio"
+            ]
+          },
+          "text": "Atrás",
+          "font_size": 26,
+          "color": "#0000ff",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "pinzamiento",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_15.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h2.val=1500",
+          "n2.val=1500",
+          "h1.val=4",
+          "n1.val=4",
+          "h0.val=27",
+          "x0.val=27"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 102,
+          "y": 200,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 377,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h1.val"
+            ]
+          },
+          "value": 10,
+          "min": 0,
+          "max": 20,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 435,
+          "y": 375,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 632,
+          "y": 320,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n2.val=h2.val"
+            ]
+          },
+          "value": 1500,
+          "min": 0,
+          "max": 2500,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n2",
+          "type": "number",
+          "x": 741,
+          "y": 260,
+          "w": 100,
+          "h": 40,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 45,
+          "y": 474,
+          "w": 275,
+          "h": 90,
+          "events": {
+            "up": [
+              "page ortopedia"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 417,
+          "y": 200,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "epicondilitis",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_16.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h2.val=1200",
+          "n2.val=1200",
+          "h1.val=4",
+          "n1.val=4",
+          "h0.val=16",
+          "x0.val=16"
+        ]
+      },
+      "components": [
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 377,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h1.val"
+            ]
+          },
+          "value": 10,
+          "min": 0,
+          "max": 20,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 434,
+          "y": 374,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 632,
+          "y": 320,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n2.val=h2.val"
+            ]
+          },
+          "value": 1500,
+          "min": 0,
+          "max": 2500,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n2",
+          "type": "number",
+          "x": 741,
+          "y": 260,
+          "w": 100,
+          "h": 40,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 45,
+          "y": 474,
+          "w": 275,
+          "h": 90,
+          "events": {
+            "up": [
+              "page ortopedia"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 210,
+          "w": 290,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 415,
+          "y": 205,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "tendon",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_17.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h2.val=1500",
+          "n2.val=1500",
+          "h1.val=4",
+          "n1.val=4",
+          "h0.val=19",
+          "x0.val=19"
+        ]
+      },
+      "components": [
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 377,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h1.val"
+            ]
+          },
+          "value": 10,
+          "min": 0,
+          "max": 20,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 434,
+          "y": 374,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 632,
+          "y": 320,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n2.val=h2.val"
+            ]
+          },
+          "value": 1500,
+          "min": 0,
+          "max": 2500,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n2",
+          "type": "number",
+          "x": 741,
+          "y": 260,
+          "w": 100,
+          "h": 40,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 45,
+          "y": 474,
+          "w": 275,
+          "h": 90,
+          "events": {
+            "up": [
+              "page ortopedia"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 210,
+          "w": 290,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 415,
+          "y": 205,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "fascitis",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_18.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h2.val=1500",
+          "n2.val=1500",
+          "h1.val=4",
+          "n1.val=4",
+          "h0.val=27",
+          "x0.val=27"
+        ]
+      },
+      "components": [
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 377,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h1.val"
+            ]
+          },
+          "value": 10,
+          "min": 0,
+          "max": 20,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 434,
+          "y": 374,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 632,
+          "y": 320,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n2.val=h2.val"
+            ]
+          },
+          "value": 1500,
+          "min": 0,
+          "max": 2500,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n2",
+          "type": "number",
+          "x": 741,
+          "y": 260,
+          "w": 100,
+          "h": 40,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 45,
+          "y": 474,
+          "w": 275,
+          "h": 90,
+          "events": {
+            "up": [
+              "page ortopedia"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 210,
+          "w": 290,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 415,
+          "y": 205,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "aquilodinia",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_19.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h2.val=1500",
+          "n2.val=1500",
+          "h1.val=4",
+          "n1.val=4",
+          "h0.val=19",
+          "x0.val=19"
+        ]
+      },
+      "components": [
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 377,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h1.val"
+            ]
+          },
+          "value": 10,
+          "min": 0,
+          "max": 20,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 434,
+          "y": 374,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 632,
+          "y": 320,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n2.val=h2.val"
+            ]
+          },
+          "value": 1500,
+          "min": 0,
+          "max": 2500,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n2",
+          "type": "number",
+          "x": 741,
+          "y": 260,
+          "w": 100,
+          "h": 40,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 45,
+          "y": 474,
+          "w": 275,
+          "h": 90,
+          "events": {
+            "up": [
+              "page ortopedia"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 210,
+          "w": 290,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 415,
+          "y": 205,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "gatillo",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_20.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h2.val=400",
+          "n2.val=400",
+          "h1.val=4",
+          "n1.val=4",
+          "h0.val=27",
+          "x0.val=27"
+        ]
+      },
+      "components": [
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 377,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h1.val"
+            ]
+          },
+          "value": 10,
+          "min": 0,
+          "max": 20,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 434,
+          "y": 374,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 632,
+          "y": 320,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n2.val=h2.val"
+            ]
+          },
+          "value": 1500,
+          "min": 0,
+          "max": 2500,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n2",
+          "type": "number",
+          "x": 741,
+          "y": 260,
+          "w": 100,
+          "h": 40,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 45,
+          "y": 474,
+          "w": 275,
+          "h": 90,
+          "events": {
+            "up": [
+              "page ortopedia"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 210,
+          "w": 290,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 415,
+          "y": 205,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "pseudoartrosis",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_21.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h2.val=4000",
+          "n2.val=4000",
+          "h1.val=4",
+          "n1.val=4",
+          "h0.val=27",
+          "x0.val=27"
+        ]
+      },
+      "components": [
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 377,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h1.val"
+            ]
+          },
+          "value": 10,
+          "min": 0,
+          "max": 20,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 434,
+          "y": 374,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 632,
+          "y": 320,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n2.val=h2.val"
+            ]
+          },
+          "value": 4000,
+          "min": 0,
+          "max": 5000,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n2",
+          "type": "number",
+          "x": 741,
+          "y": 260,
+          "w": 100,
+          "h": 40,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 45,
+          "y": 474,
+          "w": 275,
+          "h": 90,
+          "events": {
+            "up": [
+              "page ortopedia"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 210,
+          "w": 290,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 415,
+          "y": 205,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "dermatologia",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_23.png",
+      "bg_color": null,
+      "events": {},
+      "components": [
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 50,
+          "y": 137,
+          "w": 465,
+          "h": 95,
+          "events": {
+            "up": [
+              "page postraumatismo"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b1",
+          "type": "button",
+          "x": 520,
+          "y": 137,
+          "w": 465,
+          "h": 94,
+          "events": {
+            "up": [
+              "page cicatrizacion"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b2",
+          "type": "button",
+          "x": 50,
+          "y": 337,
+          "w": 465,
+          "h": 91,
+          "events": {
+            "up": [
+              "page ulcera"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b3",
+          "type": "button",
+          "x": 522,
+          "y": 334,
+          "w": 465,
+          "h": 94,
+          "events": {
+            "up": [
+              "page quemaduras"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b4",
+          "type": "button",
+          "x": 2,
+          "y": 2,
+          "w": 186,
+          "h": 56,
+          "events": {
+            "up": [
+              "page patologias"
+            ]
+          },
+          "text": "Atrás",
+          "font_size": 26,
+          "color": "#0000ff",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "postraumatismo",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_24.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h0.val=13",
+          "x0.val=h0.val",
+          "h1.val=4",
+          "n0.val=h1.val",
+          "h2.val=370",
+          "n1.val=h2.val"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 211,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 429,
+          "y": 212,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 382,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n0.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 10,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 584,
+          "y": 305,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h2.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 1000,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 425,
+          "y": 377,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 894,
+          "y": 300,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 45,
+          "y": 475,
+          "w": 275,
+          "h": 87,
+          "events": {
+            "up": [
+              "page dermatologia"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "cicatrizacion",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_25.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h0.val=13",
+          "x0.val=h0.val",
+          "h1.val=4",
+          "n0.val=h1.val",
+          "h2.val=370",
+          "n1.val=h2.val"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 211,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 429,
+          "y": 212,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 382,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n0.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 10,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 584,
+          "y": 305,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h2.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 1000,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 425,
+          "y": 377,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 894,
+          "y": 300,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 42,
+          "y": 477,
+          "w": 275,
+          "h": 87,
+          "events": {
+            "up": [
+              "page dermatologia"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "ulcera",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_26.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h0.val=13",
+          "x0.val=h0.val",
+          "h1.val=4",
+          "n0.val=h1.val",
+          "h2.val=370",
+          "n1.val=h2.val"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 211,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 429,
+          "y": 212,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 382,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n0.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 10,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 584,
+          "y": 305,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h2.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 1000,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 425,
+          "y": 377,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 894,
+          "y": 300,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 44,
+          "y": 475,
+          "w": 275,
+          "h": 87,
+          "events": {
+            "up": [
+              "page dermatologia"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "quemaduras",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_27.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h0.val=13",
+          "x0.val=h0.val",
+          "h1.val=4",
+          "n0.val=h1.val",
+          "h2.val=370",
+          "n1.val=h2.val"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 211,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 429,
+          "y": 212,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 382,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n0.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 10,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 584,
+          "y": 305,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h2.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 1000,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 425,
+          "y": 377,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 894,
+          "y": 300,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 44,
+          "y": 475,
+          "w": 275,
+          "h": 87,
+          "events": {
+            "up": [
+              "page dermatologia"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "estetica",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_28.png",
+      "bg_color": null,
+      "events": {},
+      "components": [
+        {
+          "name": "b4",
+          "type": "button",
+          "x": -4,
+          "y": 1,
+          "w": 186,
+          "h": 56,
+          "events": {
+            "up": [
+              "page patologias"
+            ]
+          },
+          "text": "Atrás",
+          "font_size": 26,
+          "color": "#0000ff",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 51,
+          "y": 133,
+          "w": 466,
+          "h": 97,
+          "events": {
+            "up": [
+              "page celulitis"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b1",
+          "type": "button",
+          "x": 521,
+          "y": 135,
+          "w": 466,
+          "h": 97,
+          "events": {
+            "up": [
+              "page estrias"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b2",
+          "type": "button",
+          "x": 278,
+          "y": 331,
+          "w": 466,
+          "h": 97,
+          "events": {
+            "up": [
+              "page linfedema"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "celulitis",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_31.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h0.val=13",
+          "x0.val=h0.val",
+          "h1.val=4",
+          "n0.val=h1.val",
+          "h2.val=1500",
+          "n1.val=h2.val"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 211,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 429,
+          "y": 212,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 382,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n0.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 10,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 584,
+          "y": 305,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h2.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 2000,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 425,
+          "y": 377,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 894,
+          "y": 300,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 44,
+          "y": 475,
+          "w": 275,
+          "h": 87,
+          "events": {
+            "up": [
+              "page estetica"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "estrias",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_29.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h0.val=13",
+          "x0.val=h0.val",
+          "h1.val=4",
+          "n0.val=h1.val",
+          "h2.val=370",
+          "n1.val=h2.val"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 211,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 429,
+          "y": 212,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 382,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n0.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 10,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 583,
+          "y": 305,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h2.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 1000,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 425,
+          "y": 377,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 894,
+          "y": 300,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 44,
+          "y": 475,
+          "w": 275,
+          "h": 87,
+          "events": {
+            "up": [
+              "page estetica"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "name": "linfedema",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_30.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h0.val=13",
+          "x0.val=h0.val",
+          "h1.val=4",
+          "n0.val=h1.val",
+          "h2.val=350",
+          "n1.val=h2.val"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 211,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 429,
+          "y": 212,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 382,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n0.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 10,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 584,
+          "y": 305,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h2.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 1000,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 425,
+          "y": 377,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 894,
+          "y": 300,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 44,
+          "y": 475,
+          "w": 275,
+          "h": 87,
+          "events": {
+            "up": [
+              "page estetica"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "name": "urogenital",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_35.png",
+      "bg_color": null,
+      "events": {},
+      "components": [
+        {
+          "name": "b4",
+          "type": "button",
+          "x": 1,
+          "y": 1,
+          "w": 186,
+          "h": 56,
+          "events": {
+            "up": [
+              "page patologias"
+            ]
+          },
+          "text": "Atrás",
+          "font_size": 26,
+          "color": "#0000ff",
+          "sta": "image",
+          "bg_color": null,
+          "image": "pic_0.png",
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 52,
+          "y": 135,
+          "w": 466,
+          "h": 97,
+          "events": {
+            "up": [
+              "page peyronie"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b1",
+          "type": "button",
+          "x": 521,
+          "y": 135,
+          "w": 466,
+          "h": 97,
+          "events": {
+            "up": [
+              "page disfuncion"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        },
+        {
+          "name": "b2",
+          "type": "button",
+          "x": 277,
+          "y": 330,
+          "w": 466,
+          "h": 97,
+          "events": {
+            "up": [
+              "page dolor_pelvis"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "name": "peyronie",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_34.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h0.val=17",
+          "x0.val=h0.val",
+          "h1.val=4",
+          "n0.val=h1.val",
+          "h2.val=1500",
+          "n1.val=h2.val"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 211,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 429,
+          "y": 212,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 382,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n0.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 10,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 584,
+          "y": 305,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h2.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 2000,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 425,
+          "y": 377,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 894,
+          "y": 300,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 44,
+          "y": 475,
+          "w": 275,
+          "h": 87,
+          "events": {
+            "up": [
+              "page urogenital"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "name": "disfuncion",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_32.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h0.val=14",
+          "x0.val=h0.val",
+          "h1.val=4",
+          "n0.val=h1.val",
+          "h2.val=2500",
+          "n1.val=h2.val"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 211,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 429,
+          "y": 212,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 382,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n0.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 10,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 584,
+          "y": 305,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h2.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 3000,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 425,
+          "y": 377,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 894,
+          "y": 300,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 43,
+          "y": 475,
+          "w": 275,
+          "h": 87,
+          "events": {
+            "up": [
+              "page urogenital"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "name": "dolor_pelvis",
+      "w": 1024,
+      "h": 600,
+      "bg_image": "pic_33.png",
+      "bg_color": null,
+      "events": {
+        "loadend": [
+          "h0.val=14",
+          "x0.val=h0.val",
+          "h1.val=4",
+          "n0.val=h1.val",
+          "h2.val=1500",
+          "n1.val=h2.val"
+        ]
+      },
+      "components": [
+        {
+          "name": "h0",
+          "type": "slider",
+          "x": 112,
+          "y": 211,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "x0.val=h0.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 100,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "x0",
+          "type": "xfloat",
+          "x": 429,
+          "y": 212,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000",
+          "decimals": 2
+        },
+        {
+          "name": "h1",
+          "type": "slider",
+          "x": 110,
+          "y": 382,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n0.val=h1.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 10,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "h2",
+          "type": "slider",
+          "x": 584,
+          "y": 305,
+          "w": 294,
+          "h": 25,
+          "events": {
+            "slide": [
+              "n1.val=h2.val"
+            ]
+          },
+          "value": 50,
+          "min": 0,
+          "max": 2000,
+          "track_color": "#008100",
+          "cursor_color": "#410000"
+        },
+        {
+          "name": "n0",
+          "type": "number",
+          "x": 425,
+          "y": 377,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "n1",
+          "type": "number",
+          "x": 894,
+          "y": 300,
+          "w": 100,
+          "h": 30,
+          "events": {},
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "color",
+          "bg_color": "#ffffff",
+          "value": 0,
+          "border_color": "#000000"
+        },
+        {
+          "name": "b0",
+          "type": "button",
+          "x": 44,
+          "y": 475,
+          "w": 275,
+          "h": 87,
+          "events": {
+            "up": [
+              "page urogenital"
+            ]
+          },
+          "text": "",
+          "font_size": 26,
+          "color": "#000000",
+          "sta": "transparent",
+          "bg_color": null,
+          "style": 4,
+          "pressed_bg": "#008100",
+          "pressed_color": "#ffffff"
+        }
+      ]
+    }
+  ]
+}

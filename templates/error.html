@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% set title = "Pantalla no encontrada" %}
+{% set crumbs = [] %}
+
+{% block content %}
+<section class="view view-error">
+  <span class="modal-icon warn">{{ icon('warning') }}</span>
+  <p class="eyebrow">Error E-404</p>
+  <h1>Pantalla no encontrada</h1>
+  <p class="modal-text">La pantalla solicitada no existe en la configuración del equipo.</p>
+  <a class="btn btn-primary" href="{{ url_for('page', name=home_page) }}">{{ icon('home') }}Volver al menú principal</a>
+</section>
+{% endblock %}

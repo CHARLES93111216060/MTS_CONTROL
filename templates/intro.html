@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{{ device.brand }} · Iniciando{% endblock %}
+{% block statusbar %}{% endblock %}
+
+{% block content %}
+<section class="boot" id="boot" data-next="{{ url_for('page', name=next_page) }}">
+  <div class="boot-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+  <img class="boot-logo" src="{{ url_for('static', filename='img/pic_8.png') }}" alt="{{ device.brand }}">
+  <p class="boot-model">{{ device.model }}</p>
+
+  <div class="boot-progress"><span id="bootBar"></span></div>
+
+  <ul class="boot-log" id="bootLog">
+    <li data-t="350">Inicializando controlador principal</li>
+    <li data-t="900">Verificando generador de ondas de choque</li>
+    <li data-t="1500">Comprobando presión del circuito</li>
+    <li data-t="2100">Detectando aplicador</li>
+    <li data-t="2700">Autodiagnóstico de seguridad</li>
+  </ul>
+  <p class="boot-skip">Toque la pantalla para continuar</p>
+</section>
+{% endblock %}

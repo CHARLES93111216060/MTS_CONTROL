@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="view view-menu">
+  <div class="view-head">
+    {% if parent %}
+      <a class="btn-back" href="{{ url_for('page', name=parent) }}">{{ icon('back') }}<span>Atrás</span></a>
+    {% endif %}
+    <div>
+      <p class="eyebrow">{% if parent %}Seleccione una indicación{% else %}Seleccione modo de trabajo{% endif %}</p>
+      <h1>{{ title }}</h1>
+    </div>
+  </div>
+
+  <div class="menu-grid n{{ items|length }}">
+    {% for it in items %}
+      <a class="card card-link" href="{{ url_for('page', name=it.name) }}" style="--i:{{ loop.index0 }}">
+        <span class="card-icon">
+          {% if it.kind == 'protocol' %}{{ icon('wave') }}{% else %}{{ icon(it.name) }}{% endif %}
+        </span>
+        <span class="card-body">
+          <span class="card-title">{{ it.label }}</span>
+          {% if it.description %}<span class="card-desc">{{ it.description }}</span>{% endif %}
+          <span class="card-meta">
+            {% if it.applicator %}<span class="tag">{{ icon('probe') }}{{ it.applicator }}</span>{% endif %}
+            {% if it.count %}<span class="tag">{{ it.count }} {{ 'zonas' if it.kind == 'bodymap' else 'protocolos' }}</span>{% endif %}
+          </span>
+        </span>
+        <span class="card-chevron">{{ icon('chevron') }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
