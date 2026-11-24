@@ -5,6 +5,12 @@ DEVICE = {
     "firmware": "v2.4.1",
 }
 
+# Enlace que aparece en todas las páginas (bisel inferior del equipo).
+PROMO = {
+    "url": "https://wavevision.at/es/",
+    "text": "Curso de ondas de choque en línea - Certificación ISMST",
+}
+
 # Página que actúa como menú principal (la intro "page0" navega a ella).
 HOME_PAGE = "inicio"
 BODYMAP_PAGE = "mapa"

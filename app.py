@@ -168,7 +168,7 @@ app = Flask(__name__)
 
 @app.context_processor
 def inject_globals():
-    return {"device": cfg.DEVICE, "home_page": cfg.HOME_PAGE}
+    return {"device": cfg.DEVICE, "home_page": cfg.HOME_PAGE, "promo": cfg.PROMO}
 
 
 @app.route("/")
